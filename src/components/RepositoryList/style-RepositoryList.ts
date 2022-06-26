@@ -16,7 +16,7 @@ export const Container = styled.div`
         position: absolute;
         left: 0;
         top: 15rem;
-        z-index: 1;
+        // z-index: 1;
     }
 `;
 

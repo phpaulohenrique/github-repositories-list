@@ -9,22 +9,27 @@ export const Card = styled.div`
     // width: 100%;
 
 
-    ::hover{
+    :hover{
         cursor: pointer;
     }
 
 `;
 
+export const ContainerCardInfo = styled.div`
+    width: 80%;
+    // background-color: tomato;
+`
+
 
 export const TitleRepository = styled.h1`
-    font-size: 1.6rem;
+    font-size: 1.7rem;
     margin-bottom: 1.4rem;
     font-weight: 500;
 `;
 
 
 export const RepositoryLanguage = styled.span`
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     margin-right: 1rem;
     background-color: #1c73ff;
     color: #fff;
@@ -34,7 +39,7 @@ export const RepositoryLanguage = styled.span`
     letter-spacing: .07rem;
 `;
 
-export const ContainerCardInfo = styled.div`
-    width: 80%;
-    // background-color: tomato;
-`
+export const Span = styled.span`
+    font-size: 1.4rem;
+`;
+

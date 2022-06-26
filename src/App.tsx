@@ -1,102 +1,99 @@
-import axios from "axios";
 import { useState } from "react";
+import axios from "axios";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Modal from "react-modal";
+
 import { Header } from "./components/Header/Header";
 import { RepositoryList } from "./components/RepositoryList/RepositoryList";
 import { IRepository } from "./types/repository";
+import { alertToastify } from "./components/Toastify/alertToastify";
+import { DetailRepositoryModal } from "./components/DetailRepositoryModal/DetailRepositoryModal";
+import { DetailRepositoryProvider, useRepositorySelected } from "./hooks/DetailRepositoryModalContext";
 
-import {alertToastify} from './components/Toastify/alertToastify'
-
-import { ToastContainer, toast } from 'react-toastify';
-
-
-import 'react-toastify/dist/ReactToastify.css'
-
-
-// interface err{
-//     message: string;
-// }
+Modal.setAppElement("#root");
 
 function App() {
-    const [user, setUser] = useState<string>('phpaulohenrique');
+    const [user, setUser] = useState<string>("phpaulohenrique");
     const [userRepositories, setUserRepositories] = useState<IRepository[]>([]);
-    // console.log(user);
 
+    // const [repositorySelected, setRepositorySelected] = useState<IRepository>({} as IRepository);
+    // console.log(repositorySelected);
+    const { repositorySelected } = useRepositorySelected();
+
+    // console.log(repositorySelected())
+
+    // repositorySelected();
+
+    const [isRepositoryDetailModalOpen, setIsRepositoryDetailModalOpen] =
+        useState(false);
+
+    function handleOpenRepositoryDetailModal() {
+        setIsRepositoryDetailModalOpen(true);
+        // repositorySelected();
+    }
+
+    function handleCloseRepositoryDetailModal() {
+        setIsRepositoryDetailModalOpen(false);
+    }
 
     const getUserRepositories = async () => {
-
         try {
             const response = await axios.get(
-            `https://api.github.com/users/${user}/repos`
+                `https://api.github.com/users/${user}/repos`
             );
             setUserRepositories(response.data);
 
-            console.log(response.data);
-            // if(response.data == 0){
-            //     // const notify = () => toast.error('User has no repositories!',{
-            //     //     position: toast.POSITION.TOP_CENTER
-            //     // })
+            // console.log(response.data);
 
-            //     alertToastify('User has no repositories!')
-            // }
-
-            response.data == 0 && alertToastify('User has no repositories')
-            
-        } catch(error) {
-            // alert('deu erro')
-
-            // EXAMPLE USER THAT EXISTS BUT DOES NOT HAVE REPOSITORY: zzax
-
-
+            response.data == 0 && alertToastify("User has no repositories!");
+        } catch (error) {
             if (error instanceof Error) {
-                // console.log('error message: ', error.message);
-                // const isError404 = error.message.includes('404')
-                // console.log(isError404);
-
-                // const notify = () => toast.error('User does not exist!',{
-                //     position: toast.POSITION.TOP_CENTER
-                // })
-                // error.message.includes('404') && 
-                if(error.message.includes('404')){
-                    alertToastify('User does not exist!')
+                if (error.message.includes("404")) {
+                    alertToastify("User does not exist on GitHub!");
                     setUserRepositories([]);
 
-                    return 
+                    return;
                 }
 
-                alertToastify(error.message)
-                
+                alertToastify(error.message);
+
                 // console.log('unexpected error: ', error);
-
             } else {
-                // alertToastify(error)
                 // console.log(error)
-                alertToastify('Unexpected error!')
+                alertToastify("Unexpected error!");
                 setUserRepositories([]);
-
             }
-
             // setUserRepositories([]);
-            alert('cuca')
-
         }
-        
+
         // console.log(userRepositories);
     };
 
     return (
         <div className="App">
-            <Header
-                user={user}
-                setUser={setUser}
-                handleGetUserRepositories={getUserRepositories}
-                totalRepositories={userRepositories.length}
+            {/* <DetailRepositoryProvider> */}
+                <Header
+                    user={user}
+                    setUser={setUser}
+                    handleGetUserRepositories={getUserRepositories}
+                    totalRepositories={userRepositories.length}
+                />
+                <RepositoryList
+                    repositories={userRepositories}
+                    // onClickCard={setRepositorySelected}
+                    onOpenDetailRepositoryModal={
+                        handleOpenRepositoryDetailModal
+                    }
+                />
 
-            />
-            <RepositoryList
-                repositories={userRepositories}
-            />
+                <ToastContainer />
 
-            <ToastContainer />
+                <DetailRepositoryModal
+                    isOpen={isRepositoryDetailModalOpen}
+                    onRequestClose={handleCloseRepositoryDetailModal}
+                />
+            {/* </DetailRepositoryProvider> */}
         </div>
     );
 }

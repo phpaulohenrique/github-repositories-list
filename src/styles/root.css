@@ -1,27 +1,31 @@
-html{
-	line-height: 1.15; /* 1 */
+html {
+    line-height: 1.15;
+    /* 1 */
     scroll-behavior: smooth;
 
 }
 
-:root{
-    
+:root {
+
     font-size: 62.5%;
     --black-600: rgb(39, 31, 31);
-    
+
 
 }
 
-body, button, input, textarea{
+body,
+button,
+input,
+textarea {
     font-size: 1.6rem;
-    font-family:  'Roboto', sans-serif;
+    font-family: 'Roboto', sans-serif;
     color: rgb(36, 36, 36);
 }
 
-body{
+body {
     font-size: 1.6rem;
     background-color: #fff;
-    
+
 
     /* position: relative; */
     /* letter-spacing: 1.5px; */
@@ -31,7 +35,52 @@ body{
 
 }
 
-a, button:hover{
+a,
+button:hover {
     cursor: pointer;
 }
 
+.react-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.5);
+
+    
+}
+
+/* body.react-modal-overlay{
+    overflow-y: hidden;
+    height: 100%;
+
+} */
+
+
+.react-modal-content {
+    /* position: relative;
+    padding: 3rem;
+    width: 100%;
+    max-width: 576px;
+    background: var(--background);
+    border-radius: 0.25rem; */
+}
+
+.react-modal-close {
+    /* position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: transparent;
+    border: 0;
+    transition: filter 0.2s ease-in-out; */
+}
+
+.react-modal-close:hover{
+    /* filter: brightness(0.8); */
+
+
+}

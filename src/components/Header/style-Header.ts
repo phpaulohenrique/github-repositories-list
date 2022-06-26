@@ -44,7 +44,7 @@ export const TotalRepositories = styled.span`
 export const ContainerInput = styled.div`
     position: absolute;
     // background-color: #313533;
-    bottom: -2.5rem;
+    bottom: -2.4rem;
     left: 50%;
     width: 90%;
     transform: translateX(-50%);
@@ -87,7 +87,7 @@ export const ButtonSearch = styled.button`
     display: flex;
     align-items: center;
     justify-content: center;
-    border-left: .4rem solid #fff;
+    border-left: .34rem solid #fff;
 
     
 
