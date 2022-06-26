@@ -8,6 +8,16 @@ export const Container = styled.div`
     padding: 1.3rem 2rem;
     margin-top: 3.5rem;
     padding-bottom: 10rem;
+
+    &::before{
+        content: '';
+        width: 100%;
+        border-bottom: solid 1px #000;
+        position: absolute;
+        left: 0;
+        top: 15rem;
+        z-index: 1;
+    }
 `;
 
 

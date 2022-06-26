@@ -17,14 +17,14 @@ export const Card = styled.div`
 
 
 export const TitleRepository = styled.h1`
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     margin-bottom: 1.4rem;
     font-weight: 500;
 `;
 
 
 export const RepositoryLanguage = styled.span`
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     margin-right: 1rem;
     background-color: #1c73ff;
     color: #fff;

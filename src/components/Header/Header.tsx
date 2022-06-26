@@ -10,8 +10,6 @@ interface IHeaderProps{
     totalRepositories: number;
 }
 
-
-
 export function Header({user, setUser, handleGetUserRepositories, totalRepositories}:IHeaderProps ){
     
     // console.log(totalRepositories)

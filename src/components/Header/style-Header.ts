@@ -4,12 +4,14 @@ import  styled from 'styled-components';
 export const Container = styled.div`
     background-color: #1A1A20;
     width: 100%;
-    height: 12rem;
-    padding: 1.3rem 2rem;
+    height: 11rem;
+    padding: 1rem 2rem;
     position: relative;
     // z-index: 100;
     // position: fixed;
     // top: 0;
+
+
 `;
 
 export const ContainerHeaderInfo = styled.div`
@@ -23,7 +25,7 @@ export const ContainerHeaderInfo = styled.div`
 
 export const Title = styled.h1`
     color: #fff;
-    font-size: 2.1rem;
+    font-size: 2rem;
     font-weight: 500;
     // margin-top: 1rem;
     letter-spacing: .1rem;
@@ -42,7 +44,7 @@ export const TotalRepositories = styled.span`
 export const ContainerInput = styled.div`
     position: absolute;
     // background-color: #313533;
-    bottom: -2rem;
+    bottom: -2.5rem;
     left: 50%;
     width: 90%;
     transform: translateX(-50%);
@@ -57,13 +59,14 @@ export const Input = styled.input`
     // top: 100px;
     // position: absolute;
     background-color: #e0e0de;
-    font-size: 2rem;
-    padding: 1.3rem .9rem;
+    font-size: 1.8rem;
+    padding-block: 1.6rem 1rem;
+    padding-inline: .9rem;
     width: 80%;
     // margin-top: 3rem;
     border: none;
-    border-right: .4rem solid #fff;
     letter-spacing: .1rem;
+    color: #0B0B54;
 
     ::placeholder{
         font-style: italic;
@@ -79,11 +82,13 @@ export const ButtonSearch = styled.button`
     // border-radius: 1rem;
     border: none;
     // margin-left: .7rem;
-    padding: 1.15rem;
+    padding: 1.1rem;
     background-color: #e0e0de;
     display: flex;
     align-items: center;
     justify-content: center;
+    border-left: .4rem solid #fff;
+
     
 
 `;

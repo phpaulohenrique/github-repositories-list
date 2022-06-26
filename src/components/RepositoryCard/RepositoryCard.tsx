@@ -19,7 +19,7 @@ export function RepositoryCard({repository }: IRepositoryCardProps){
                 
                 {repository.language && <RepositoryLanguage>{repository.language}</RepositoryLanguage>}
                 
-                <span>{moment(repository.created_at).format('DD-MM-YYYY')}</span>
+                <span>{`Created: ${moment(repository.created_at).format('DD-MM-YYYY')}`}</span>
                 
             </ContainerCardInfo>
 
